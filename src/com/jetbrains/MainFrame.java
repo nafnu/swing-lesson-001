@@ -9,6 +9,8 @@ public class MainFrame extends JFrame {
 
     private JTextArea textArea;
     private JButton btn,btn2;
+    private Integer clicks = 0;
+
 
     public MainFrame(){
         //we move all the methods from Main to here
@@ -21,16 +23,19 @@ public class MainFrame extends JFrame {
 
         textArea = new JTextArea("This is sentence One.");
 
-        btn = new JButton("Click ME ** REPEAT **");
-        btn2 = new JButton("Click ME ** CLEAR **");
+        btn = new JButton("** COUNTER **");
+        btn2 = new JButton("** CLEAR **");
+
 
         btn.addActionListener(
 
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        textArea.append("This is sentence Two.");
+                      //  textArea.append("This is sentence Two.");
 
+                        clicks++;
+                        textArea.setText(Integer.toString(clicks));
                     }
                 }
         );
@@ -39,7 +44,11 @@ public class MainFrame extends JFrame {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        textArea.setText(null); //clean text
+                        // textArea.setText(null); //clean text
+
+                        clicks = 0;
+                        textArea.setText(Integer.toString(clicks));
+
                     }
                 }
 
